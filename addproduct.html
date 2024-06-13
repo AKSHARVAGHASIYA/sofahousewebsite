@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+</head>
+
+<body>
+    <h1>Personal Details</h1>
+
+    <form action="/addproduct/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="P_name">Name:</label><br>
+        <input type="text" id="P_name" name="name" required><br><br>
+        <label for="P_price">Product Price : </label><br>
+        <input type="number" id="P_price" name="price" required><br><br>
+        <label for="P_image">Product image :</label><br>
+        <input type="file" id="P_image" name="pic" required><br><br>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                 <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select name="cat" class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                {% for i in cat %}
+                <option>{{i.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</body>
+</html>
